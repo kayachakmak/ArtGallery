@@ -11,5 +11,6 @@ export default function HomePage() {
   if (isLoading) return <div>loading...</div>;
 
   console.log(data);
+
   return <ArtPieces pieces={pieces} />;
 }
