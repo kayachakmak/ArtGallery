@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import ArtPiecePreview from "./ArtPiecePreview";
 
 jest.mock("next/image", () => ({ src, alt }) => <img src={src} alt={alt} />);
