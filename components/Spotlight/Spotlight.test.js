@@ -13,7 +13,7 @@ test("renders spotlight piece's image", () => {
   render(<Spotlight {...mockArtPiece} />);
   const image = screen.getByAltText(mockArtPiece.artist);
   expect(image).toBeInTheDocument();
-  expect(image).toHaveAttribute("src", mockArtPiece.artist);
+  expect(image).toHaveAttribute("src", mockArtPiece.image);
 });
 
 test("renders spotlight piece's artist", () => {
