@@ -1,7 +1,17 @@
 import Image from "next/image";
-export default function ArtPieceDetails({ image, title, artist, year, genre }) {
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
+export default function ArtPieceDetails({
+  isFavorite,
+  onToggle,
+  image,
+  title,
+  artist,
+  year,
+  genre,
+}) {
   return (
     <figure>
+      <FavoriteButton isFavorite={isFavorite} onToggle={onToggle} />
       <Image src={image} alt={title} height={250} width={190} />
       <figcaption>
         {artist}: {title}
