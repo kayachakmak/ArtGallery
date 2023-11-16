@@ -8,6 +8,9 @@ export default function Spotlight({
   onToggle,
   favorites,
 }) {
+  console.log(artist);
+  console.log(randomPieceSlug);
+
   return (
     <>
       <h1>Art Gallery</h1>
