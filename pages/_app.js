@@ -18,7 +18,6 @@ export default function App({ Component, pageProps }) {
   const [artPiecesInfo, setArtpiecesInfo] = useState([]);
 
   // useEffect(() => {
-
   // }, []);
 
   if (error) return <div>{error.message}</div>;
@@ -45,6 +44,20 @@ export default function App({ Component, pageProps }) {
     });
   }
 
+  function handleSubmitComment(input) {
+    setArtpiecesInfo((artPiecesInfo) => {
+      const info = artPiecesInfo.find((info) => info.slug === id);
+
+      if (info) {
+        return artPiecesInfo.map((info) =>
+          info.slug === id ? { ...info, isFavorite: !info.isFavorite } : info
+        );
+      }
+
+      return [...artPiecesInfo, { slug: id, comment: input }];
+    });
+  }
+
   // console.log(randomPiece.slug);
   return (
     <>
@@ -58,6 +71,7 @@ export default function App({ Component, pageProps }) {
         randomPieceSlug={randomPiece.slug}
         favorites={artPiecesInfo}
         onToggle={handleToggleFavorite}
+        onSubmitComment={handleSubmitComment}
       />
 
       <Layout />
