@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout/Layout";
 import GlobalStyle from "../styles";
 import useSWR from "swr";
+import { useState } from "react";
 
 //  Find a solution for global state handling to have the art pieces available on all pages
 
@@ -13,6 +14,9 @@ export default function App({ Component, pageProps }) {
   );
 
   const pieces = data;
+
+  const [artPiecesInfo, setArtpiecesInfo] = useState([]);
+
   if (error) return <div>{error.message}</div>;
   if (isLoading) return <div>loading...</div>;
 
@@ -21,6 +25,21 @@ export default function App({ Component, pageProps }) {
   }
 
   const randomPiece = randomItem(pieces);
+
+  function handleToggleFavorite(id) {
+    setArtpiecesInfo((artPiecesInfo) => {
+      const info = artPiecesInfo.find((info) => info.slug === id);
+      const infoIndex = artPiecesInfo.findIndex((info) => info.slug === id);
+
+      if (info) {
+        return artPiecesInfo.map((info) =>
+          info.slug === id ? { ...info, isFavorite: !info.isFavorite } : info
+        );
+      }
+      return [...artPiecesInfo, { ...pieces[infoIndex], isFavorite: true }];
+      ///çalışmıyooooo
+    });
+  }
 
   return (
     <>
@@ -31,6 +50,8 @@ export default function App({ Component, pageProps }) {
         pieces={pieces}
         image={randomPiece.imageSource}
         artist={randomPiece.artist}
+        favorites={artPiecesInfo}
+        OnToggle={handleToggleFavorite}
       />
       <Layout />
     </>
