@@ -8,10 +8,11 @@ export default function ArtPieceDetails({
   artist,
   year,
   genre,
+  id,
 }) {
   return (
     <figure>
-      <FavoriteButton isFavorite={isFavorite} onToggle={onToggle} />
+      <FavoriteButton isFavorite={isFavorite} onToggle={onToggle} id={id} />
       <Image src={image} alt={title} height={250} width={190} />
       <figcaption>
         {artist}: {title}

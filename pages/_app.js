@@ -27,20 +27,22 @@ export default function App({ Component, pageProps }) {
   const randomPiece = randomItem(pieces);
 
   function handleToggleFavorite(id) {
+    console.log("id in the toggle function", id);
     setArtpiecesInfo((artPiecesInfo) => {
       const info = artPiecesInfo.find((info) => info.slug === id);
-      const infoIndex = artPiecesInfo.findIndex((info) => info.slug === id);
+      // const infoIndex = artPiecesInfo.findIndex((info) => info.slug === id);
 
       if (info) {
         return artPiecesInfo.map((info) =>
           info.slug === id ? { ...info, isFavorite: !info.isFavorite } : info
         );
       }
-      return [...artPiecesInfo, { ...pieces[infoIndex], isFavorite: true }];
-      ///çalışmıyooooo
+
+      return [...artPiecesInfo, { slug: id, isFavorite: true }];
     });
   }
 
+  console.log(artPiecesInfo);
   return (
     <>
       <GlobalStyle />
@@ -50,9 +52,11 @@ export default function App({ Component, pageProps }) {
         pieces={pieces}
         image={randomPiece.imageSource}
         artist={randomPiece.artist}
+        randomPieceSlug={randomPiece.slug}
         favorites={artPiecesInfo}
-        OnToggle={handleToggleFavorite}
+        onToggle={handleToggleFavorite}
       />
+
       <Layout />
     </>
   );
