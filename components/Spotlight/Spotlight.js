@@ -4,18 +4,21 @@ import FavoriteButton from "../FavoriteButton/FavoriteButton";
 export default function Spotlight({
   image,
   artist,
+  randomPieceSlug,
   onToggle,
-  isFavorite,
-  idSpotlight,
+  favorites,
 }) {
   return (
     <>
       <h1>Art Gallery</h1>
       <figure>
         <FavoriteButton
-          id={idSpotlight}
+          id={randomPieceSlug}
           onToggle={onToggle}
-          isFavorite={isFavorite}
+          isFavorite={favorites.find(
+            (favorite) =>
+              favorite.slug === randomPieceSlug && favorite.isFavorite
+          )}
         />
         <Image src={image} alt={artist} height={250} width={190} />
         <figcaption>{artist}</figcaption>
