@@ -1,13 +1,20 @@
 import Spotlight from "@/components/Spotlight/Spotlight";
 
-export default function HomePage({ image, artist, onToggle, isFavorite }) {
+export default function HomePage({
+  image,
+  artist,
+  randomPieceSlug,
+  onToggle,
+  favorites,
+}) {
   return (
     <>
       <Spotlight
         image={image}
         artist={artist}
+        randomPieceSlug={randomPieceSlug}
         onToggle={onToggle}
-        isFavorite={isFavorite}
+        favorites={favorites}
       />
     </>
   );
