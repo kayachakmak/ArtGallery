@@ -29,18 +29,17 @@ export default function App({ Component, pageProps }) {
   function handleToggleFavorite(id) {
     setArtpiecesInfo((artPiecesInfo) => {
       const info = artPiecesInfo.find((info) => info.slug === id);
+      const infoIndex = artPiecesInfo.findIndex((info) => info.slug === id);
 
       if (info) {
         return artPiecesInfo.map((info) =>
           info.slug === id ? { ...info, isFavorite: !info.isFavorite } : info
         );
       }
-      return [...artPiecesInfo, { id, isFavorite: true }];
+      return [...artPiecesInfo, { ...pieces[infoIndex], isFavorite: true }];
       ///çalışmıyooooo
     });
   }
-
-  console.log(artPiecesInfo);
 
   return (
     <>
