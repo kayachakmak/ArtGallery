@@ -30,6 +30,10 @@ export default function ArtPieceDetailsPage({
     (piece) => piece.slug === currentPiece?.slug
   )?.comments;
 
+  const currentPieceColors = pieces.find(
+    (piece) => piece.slug === currentPiece?.slug
+  )?.colors;
+
   if (!currentPiece) {
     return null;
   }
@@ -51,6 +55,7 @@ export default function ArtPieceDetailsPage({
         id={currentPiece.slug}
         onSubmitComment={(input) => onSubmitComment(currentPiece.slug, input)}
         comments={currentPieceComments}
+        colors={currentPieceColors}
       />
     </>
   );

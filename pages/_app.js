@@ -2,6 +2,7 @@ import Layout from "@/components/Layout/Layout";
 import GlobalStyle from "../styles";
 import useSWR from "swr";
 import { useEffect, useState } from "react";
+import useLocalStorageState from "use-local-storage-state";
 
 //  Find a solution for global state handling to have the art pieces available on all pages
 
@@ -15,7 +16,10 @@ export default function App({ Component, pageProps }) {
 
   const pieces = data;
 
-  const [artPiecesInfo, setArtpiecesInfo] = useState([]);
+  const [artPiecesInfo, setArtpiecesInfo] = useLocalStorageState(
+    "artPiecesInfo",
+    { defaultValue: [] }
+  );
 
   if (error) return <div>{error.message}</div>;
   if (isLoading) return <div>loading...</div>;
