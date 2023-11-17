@@ -21,13 +21,20 @@ export default function App({ Component, pageProps }) {
     { defaultValue: [] }
   );
 
+  const [randomPiece, setRandomPiece] = useState(null);
+  useEffect(() => {
+    if (pieces) {
+      setRandomPiece(randomItem(pieces));
+    }
+  }, [pieces]);
+
   if (error) return <div>{error.message}</div>;
   if (isLoading) return <div>loading...</div>;
 
   function randomItem(array) {
     return array[Math.floor(Math.random() * array.length)];
   }
-  const randomPiece = randomItem(pieces);
+  // const randomPiece = randomItem(pieces);
   // it changes the picture once the favorite button clicked on the Spotlight page
 
   function handleToggleFavorite(id) {
@@ -83,18 +90,21 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
-
-      <Component
-        {...pageProps}
-        pieces={pieces}
-        image={randomPiece.imageSource}
-        artist={randomPiece.artist}
-        randomPieceSlug={randomPiece.slug}
-        favorites={artPiecesInfo}
-        onToggle={handleToggleFavorite}
-        onSubmitComment={handleSubmitComment}
-      />
-
+      {randomPiece ? (
+        <Component
+          {...pageProps}
+          pieces={pieces}
+          image={randomPiece.imageSource}
+          artist={randomPiece.artist}
+          dimensions={randomPiece.dimensions}
+          randomPieceSlug={randomPiece.slug}
+          favorites={artPiecesInfo}
+          onToggle={handleToggleFavorite}
+          onSubmitComment={handleSubmitComment}
+        />
+      ) : (
+        <div>Loading...</div>
+      )}
       <Layout />
     </>
   );

@@ -1,6 +1,13 @@
 import Image from "next/image";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import Link from "next/link";
+import styled from "styled-components";
+
+const Figure = styled.figure`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+`;
 
 export default function ArtPiecePreview({
   image,
@@ -9,16 +16,24 @@ export default function ArtPiecePreview({
   id,
   onToggle,
   isFavorite,
+  dimensions,
 }) {
   return (
-    <figure>
+    <Figure>
       <FavoriteButton id={id} onToggle={onToggle} isFavorite={isFavorite} />
       <Link href={`/art-pieces/${id}`}>
-        <Image src={image} alt={title} height={250} width={190} />
+        <Image
+          src={image}
+          alt={title}
+          height={dimensions.height / 5}
+          width={dimensions.width / 5}
+        />
       </Link>
       <figcaption>
-        {title} by {artist}
+        {title}
+        <br></br>
+        by {artist}
       </figcaption>
-    </figure>
+    </Figure>
   );
 }

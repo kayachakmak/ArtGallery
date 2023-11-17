@@ -6,6 +6,7 @@ export default function HomePage({
   randomPieceSlug,
   onToggle,
   favorites,
+  dimensions,
 }) {
   return (
     <>
@@ -15,6 +16,7 @@ export default function HomePage({
         randomPieceSlug={randomPieceSlug}
         onToggle={onToggle}
         favorites={favorites}
+        dimensions={dimensions}
       />
     </>
   );
