@@ -1,6 +1,8 @@
 import Image from "next/image";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import CommentForm from "../CommentForm/CommentForm";
+import Comments from "../Comments/Comments";
+
 export default function ArtPieceDetails({
   isFavorite,
   onToggle,
@@ -10,6 +12,8 @@ export default function ArtPieceDetails({
   year,
   genre,
   id,
+  onSubmitComment,
+  comments,
 }) {
   return (
     <>
@@ -23,7 +27,8 @@ export default function ArtPieceDetails({
           Genre: {genre}, {year}
         </p>
       </figure>
-      <CommentForm id={id} />
+      <Comments comments={comments} />
+      <CommentForm onSubmitComment={onSubmitComment} />
     </>
   );
 }
