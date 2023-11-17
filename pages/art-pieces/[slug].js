@@ -47,6 +47,7 @@ export default function ArtPieceDetailsPage({
         artist={currentPiece.artist}
         year={currentPiece.year}
         genre={currentPiece.genre}
+        dimensions={currentPiece.dimensions}
         onToggle={onToggle}
         isFavorite={favorites.find(
           (favorite) =>

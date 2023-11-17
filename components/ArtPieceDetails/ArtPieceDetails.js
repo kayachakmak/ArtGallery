@@ -25,12 +25,18 @@ export default function ArtPieceDetails({
   onSubmitComment,
   comments,
   colors,
+  dimensions,
 }) {
   return (
     <>
       <figure>
         <FavoriteButton isFavorite={isFavorite} onToggle={onToggle} id={id} />
-        <Image src={image} alt={title} height={250} width={190} />
+        <Image
+          src={image}
+          alt={title}
+          height={dimensions.height / 5}
+          width={dimensions.width / 5}
+        />
         <p>
           {colors.map((color) => (
             <ColorBox key={color} color={color} />

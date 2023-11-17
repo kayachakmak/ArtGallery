@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import ArtPiecePreview from "../ArtPiecePreview/ArtPiecePreview";
 import Link from "next/link";
 
@@ -13,6 +14,7 @@ export default function ArtPieces({ pieces, onToggle, favorites }) {
               image={piece.imageSource}
               title={piece.name}
               artist={piece.artist}
+              dimensions={piece.dimensions}
               onToggle={onToggle}
               id={piece.slug}
               isFavorite={favorites.find(

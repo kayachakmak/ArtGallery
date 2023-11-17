@@ -7,6 +7,7 @@ export default function Spotlight({
   randomPieceSlug,
   onToggle,
   favorites,
+  dimensions,
 }) {
   console.log(artist);
   console.log(randomPieceSlug);
@@ -23,7 +24,12 @@ export default function Spotlight({
               favorite.slug === randomPieceSlug && favorite.isFavorite
           )}
         />
-        <Image src={image} alt={artist} height={250} width={190} />
+        <Image
+          src={image}
+          alt={artist}
+          height={dimensions.height / 5}
+          width={dimensions.width / 5}
+        />
         <figcaption>{artist}</figcaption>
       </figure>
     </>
