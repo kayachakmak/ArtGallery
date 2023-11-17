@@ -2,6 +2,13 @@ import ArtPieceDetails from "@/components/ArtPieceDetails/ArtPieceDetails";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import styled from "styled-components";
+
+const Container = styled.div`
+  display: grid;
+  place-items: center;
+  height: 100%; /* Optional: Set to the desired height */
+`;
 
 export default function ArtPieceDetailsPage({
   pieces,
@@ -39,7 +46,7 @@ export default function ArtPieceDetailsPage({
   }
 
   return (
-    <>
+    <Container>
       <Link href="/art-pieces">&larr;</Link>
       <ArtPieceDetails
         image={currentPiece.imageSource}
@@ -58,6 +65,6 @@ export default function ArtPieceDetailsPage({
         comments={currentPieceComments}
         colors={currentPieceColors}
       />
-    </>
+    </Container>
   );
 }

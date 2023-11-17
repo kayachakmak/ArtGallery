@@ -6,7 +6,7 @@ import styled from "styled-components";
 const Figure = styled.figure`
   display: flex;
   flex-direction: column;
-  margin: 60px;
+  margin-bottom: 60px;
 `;
 
 export default function ArtPiecePreview({
@@ -30,7 +30,9 @@ export default function ArtPiecePreview({
         />
       </Link>
       <figcaption>
-        {title} by {artist}
+        {title}
+        <br></br>
+        by {artist}
       </figcaption>
     </Figure>
   );

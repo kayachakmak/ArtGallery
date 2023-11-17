@@ -1,5 +1,12 @@
 import Image from "next/image";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
+import styled from "styled-components";
+
+const MainContainer = styled.div`
+  display: grid;
+  place-items: center;
+  height: 100%; /* Optional: Set to the desired height */
+`;
 
 export default function Spotlight({
   image,
@@ -13,7 +20,7 @@ export default function Spotlight({
   console.log(randomPieceSlug);
 
   return (
-    <>
+    <MainContainer>
       <h1>Art Gallery</h1>
       <figure>
         <FavoriteButton
@@ -32,6 +39,6 @@ export default function Spotlight({
         />
         <figcaption>{artist}</figcaption>
       </figure>
-    </>
+    </MainContainer>
   );
 }
