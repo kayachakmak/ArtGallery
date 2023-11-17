@@ -17,9 +17,6 @@ export default function App({ Component, pageProps }) {
 
   const [artPiecesInfo, setArtpiecesInfo] = useState([]);
 
-  // useEffect(() => {
-  // }, []);
-
   if (error) return <div>{error.message}</div>;
   if (isLoading) return <div>loading...</div>;
 
@@ -44,21 +41,41 @@ export default function App({ Component, pageProps }) {
     });
   }
 
-  function handleSubmitComment(input) {
+  function handleSubmitComment(slug, input) {
+    const currentDate = new Date();
+    const options = {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    };
+
+    const formattedDate = currentDate.toLocaleString(undefined, options);
     setArtpiecesInfo((artPiecesInfo) => {
-      const info = artPiecesInfo.find((info) => info.slug === id);
+      const infoIndex = artPiecesInfo.findIndex((info) => info.slug === slug);
+      let newArtPiecesInfo = [...artPiecesInfo];
+      if (infoIndex !== -1) {
+        // Art piece already exists, update it
+        let updatedInfo = { ...newArtPiecesInfo[infoIndex] };
+        updatedInfo.comments = updatedInfo.comments
+          ? [...updatedInfo.comments, { text: input, date: formattedDate }]
+          : [{ text: input, date: formattedDate }];
 
-      if (info) {
-        return artPiecesInfo.map((info) =>
-          info.slug === id ? { ...info, isFavorite: !info.isFavorite } : info
-        );
+        newArtPiecesInfo[infoIndex] = updatedInfo;
+      } else {
+        // Add new art piece
+        newArtPiecesInfo.push({
+          slug: slug,
+          isFavorite: false,
+          comments: [{ text: input, date: formattedDate }],
+        });
       }
-
-      return [...artPiecesInfo, { slug: id, comment: input }];
+      return newArtPiecesInfo;
     });
   }
 
-  // console.log(randomPiece.slug);
+  console.log(artPiecesInfo);
   return (
     <>
       <GlobalStyle />
