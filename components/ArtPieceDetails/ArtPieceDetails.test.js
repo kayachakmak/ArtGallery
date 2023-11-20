@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import ArtPieceDetails from "./ArtPieceDetails";
 
-jest.mock("next/image", () => ({ src, alt }) => <img src={src} alt={alt} />);
+// jest.mock("next/image", () => ({ src, alt }) => <img src={src} alt={alt} />);
 
 const mockArtPiece = {
   image: "https://example-apis.vercel.app/assets/art/orange-red-and-green.jpg",

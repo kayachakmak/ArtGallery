@@ -5,7 +5,8 @@ const NavBar = styled.nav`
   font-size: 1.5rem;
   display: flex;
   justify-content: space-evenly;
-  position: sticky;
+  position: fixed;
+  width: 100%;
   bottom: 0; /* Stick to the bottom */
   background-color: #fff; /* Or any background color you prefer */
   padding: 10px; /* Optional, for better spacing */

@@ -5,9 +5,28 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  display: grid;
-  place-items: center;
-  height: 100%; /* Optional: Set to the desired height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  margin-bottom: 50px;
+`;
+
+const StyledLink = styled(Link)`
+  align-self: flex-start;
+  margin-left: 20%;
+  margin-top: 25px;
+  color: black;
+  background-color: white;
+  text-decoration: none;
+  border: black 1px solid;
+  border-radius: 50%;
+  font-size: 30px;
+`;
+
+const StyledArtPieceDetails = styled(ArtPieceDetails)`
+  align-self: flex-start;
+  margin-left: 50%;
 `;
 
 export default function ArtPieceDetailsPage({
@@ -47,8 +66,8 @@ export default function ArtPieceDetailsPage({
 
   return (
     <Container>
-      <Link href="/art-pieces">&larr;</Link>
-      <ArtPieceDetails
+      <StyledLink href="/art-pieces"> &larr; </StyledLink>
+      <StyledArtPieceDetails
         image={currentPiece.imageSource}
         title={currentPiece.name}
         artist={currentPiece.artist}

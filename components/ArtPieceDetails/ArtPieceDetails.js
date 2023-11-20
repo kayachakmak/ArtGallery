@@ -11,6 +11,11 @@ const ColorBox = styled.span`
   height: 20px;
   margin: 0 5px;
   border: 1px solid #000; // Optional, for visibility
+  text-align: center;
+`;
+
+const StyledComments = styled(Comments)`
+  align-self: flex-start;
 `;
 
 export default function ArtPieceDetails({
@@ -50,7 +55,7 @@ export default function ArtPieceDetails({
         </p>
       </figure>
 
-      <Comments comments={comments} />
+      <StyledComments comments={comments} />
       <CommentForm onSubmitComment={onSubmitComment} />
     </>
   );
